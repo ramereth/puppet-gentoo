@@ -2,7 +2,7 @@ require 'puppet/provider/parsedfile'
  
 Puppet::Type.type(:packageuse).provide(:parsed,
     :parent => Puppet::Provider::ParsedFile,
-    :default_target => "/etc/portage/package.use",
+    :default_target => "/etc/portage/package.use/default",
     :filetype => :flat
 ) do
 
