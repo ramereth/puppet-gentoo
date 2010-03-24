@@ -63,4 +63,18 @@ Puppet::Type.newtype(:packageuse) do
         end
 
     end
+
+    newproperty(:target) do
+        desc "The location of the package.use file"
+
+        defaultto {
+            if
+                @resource.class.defaultprovider.ancestors.include? (Puppet::Provider::ParsedFile)
+                @resource.class.defaultprovider.default_target
+            else
+                nil
+            end
+        }
+    end
+
 end
