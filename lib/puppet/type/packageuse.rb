@@ -75,6 +75,15 @@ Puppet::Type.newtype(:packageuse) do
                 nil
             end
         }
+
+        # Allow us to not have to specify a whole path unless we really want to
+        munge do |value|
+            if !value.match(/^\/etc\/portage\/package.use\//)
+                value = "/etc/portage/package.use/" + value
+            end
+            value
+        end
+
     end
 
 end
