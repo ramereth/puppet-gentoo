@@ -11,10 +11,6 @@ Puppet::Type.newtype(:packageuse) do
         desc "The package"
     end
 
-    #newproperty(:package) do
-    #    desc "The package to which the use flag should be applied"
-    #end
-
     newproperty(:use_flags) do
         desc "The flag use flag(s) to apply"
 
@@ -26,21 +22,6 @@ Puppet::Type.newtype(:packageuse) do
             is == @should
         end
 
-        #def retrieve
-        #    is = super
-        #    case is
-        #    when String
-        #        is.split(/\s*,\s*/)
-        #    when Symbol
-        #        is = [is]
-        #    when Array
-        #        # nothing
-        #    else
-        #        raise Puppet::DevError, "Invalid @is type %s" % is.class
-        #    end
-        #    return is
-        #end
-              
         def should
             if defined? @should
                 if @should == [:absent]
@@ -76,9 +57,9 @@ Puppet::Type.newtype(:packageuse) do
             end
         }
 
-        # Allow us to not have to specify a whole path unless we really want to
+        # Allow us to not have to specify an absolute path unless we really want to
         munge do |value|
-            if !value.match(/^\/etc\/portage\/package.use\//)
+            if !value.match(/\//)
                 value = "/etc/portage/package.use/" + value
             end
             value
