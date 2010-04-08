@@ -50,7 +50,7 @@ Puppet::Type.newtype(:packageuse) do
 
         defaultto {
             if
-                @resource.class.defaultprovider.ancestors.include? (Puppet::Provider::ParsedFile)
+                @resource.class.defaultprovider.ancestors.include?(Puppet::Provider::ParsedFile)
                 @resource.class.defaultprovider.default_target
             else
                 nil
