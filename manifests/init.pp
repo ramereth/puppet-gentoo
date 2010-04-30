@@ -19,4 +19,14 @@ class gentoo {
             source      => "puppet:///modules/gentoo/usr/local/sbin/sync-overlays",
             mode        => 755;
     }
+
+    # Puppet went all nazi with its syntax here...
+    overlay {"osl":}
+}
+
+define overlay() {
+    file { "/etc/overlays/${name}":
+        ensure  => file,
+        before  => Exec["sync-overlays"];
+    }
 }
