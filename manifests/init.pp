@@ -11,12 +11,12 @@ class gentoo {
         "/etc/sync-overlays.cfg":
             ensure      => present,
             source      => $domain ? {
-                "osuosl.bak"    => "puppet://modules/gentoo/etc/sync-overlays.cfg/standard.bak",
-                default         => "puppet://modules/gentoo/etc/sync-overlays.cfg/standard",
+                "osuosl.bak"    => "puppet:///modules/gentoo/etc/sync-overlays.cfg/standard.bak",
+                default         => "puppet:///modules/gentoo/etc/sync-overlays.cfg/standard",
             };
         "/usr/local/sbin/sync-overlays":
             ensure      => present,
-            source      => "puppet:///gentoo/usr/local/sbin/sync-overlays",
+            source      => "puppet:///modules/gentoo/usr/local/sbin/sync-overlays",
             mode        => 755;
     }
 }
