@@ -15,7 +15,7 @@ class gentoo {
                 default         => "puppet:///gentoo/etc/sync-overlays.cfg/standard",
             };
         "/usr/local/sbin/sync-overlays":
-            ensure      => present;
+            ensure      => present,
             source      => "puppet:///gentoo/usr/local/sbin/sync-overlays",
             mode        => 755;
     }
