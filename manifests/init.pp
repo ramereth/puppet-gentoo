@@ -20,6 +20,8 @@ class gentoo {
             mode        => 755;
     }
 
+    file {"/etc/overlays": ensure => directory}
+
     # Puppet went all nazi with its syntax here...
     overlay {"osl":}
 }
