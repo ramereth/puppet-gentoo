@@ -1,0 +1,4 @@
+SERVER="oak.osuosl.org"
+OVERLAY_ROOT="/usr/local/overlays"
+PREFIX="overlay-"
+RSYNC_OPTS="-qrp --timeout=30 --delete"

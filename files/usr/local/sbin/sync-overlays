@@ -1,0 +1,12 @@
+#!/bin/bash
+
+. /etc/sync-overlays.cfg
+
+for overlay in /etc/overlays/* ; do
+    overlay=${overlay##/*/}
+    if [ "${overlay}" == "*" ] ; then
+        # dir empty
+        break
+    fi
+    rsync ${RSYNC_OPTS} ${SERVER}::${PREFIX}${overlay} ${OVERLAY_ROOT}/${overlay}
+done
