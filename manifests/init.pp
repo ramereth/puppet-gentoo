@@ -20,6 +20,7 @@ class gentoo {
             mode        => 755;
     }
 
+    file {"/usr/local/overlays": ensure => directory}
     file {"/etc/overlays": ensure => directory}
 
     # Puppet went all nazi with its syntax here...
