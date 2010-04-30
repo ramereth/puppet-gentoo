@@ -11,8 +11,8 @@ class gentoo {
         "/etc/sync-overlays.cfg":
             ensure      => present,
             source      => $domain ? {
-                "osuosl.bak"    => "puppet:///gentoo/etc/sync-overlays.cfg/standard.bak",
-                default         => "puppet:///gentoo/etc/sync-overlays.cfg/standard",
+                "osuosl.bak"    => "puppet://modules/gentoo/etc/sync-overlays.cfg/standard.bak",
+                default         => "puppet://modules/gentoo/etc/sync-overlays.cfg/standard",
             };
         "/usr/local/sbin/sync-overlays":
             ensure      => present,
