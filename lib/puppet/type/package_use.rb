@@ -1,13 +1,14 @@
-Puppet::Type.newtype(:packageuse) do
+Puppet::Type.newtype(:package_use) do
     @doc = "Set use flags for a package
     
-            packageuse { 'app-admin/puppet':
+            packageuse { 'puppet':
+                package   => 'app-admin/puppet',
                 use_flags => ['augeas', '-rrdtool'],
             }"
 
     ensurable
 
-    newparam(:package, :namevar => true) do
+    newparam(:package) do
         desc "The package"
     end
 
@@ -45,7 +46,7 @@ Puppet::Type.newtype(:packageuse) do
 
     end
 
-    newproperty(:target) do
+    newproperty(:target, :namevar => true) do
         desc "The location of the package.use file"
 
         defaultto {

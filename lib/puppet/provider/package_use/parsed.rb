@@ -1,12 +1,12 @@
 require 'puppet/provider/parsedfile'
  
-Puppet::Type.type(:packageuse).provide(:parsed,
+Puppet::Type.type(:package_use).provide(:parsed,
     :parent => Puppet::Provider::ParsedFile,
     :default_target => "/etc/portage/package.use/default",
     :filetype => :flat
 ) do
 
-    desc "The packageuse provider that uses the ParsedFile class"
+    desc "The package_use provider that uses the ParsedFile class"
  
     text_line :comment, :match => /^#/;
     text_line :blank, :match => /^\s*$/;
@@ -31,6 +31,14 @@ Puppet::Type.type(:packageuse).provide(:parsed,
         end
  
         return hash
+    end
+
+    def flush
+        # Ensure the target directory exists before creating file
+        unless File.exist?(dir = File.dirname(target))
+            Dir.mkdir(dir)
+        end
+        super
     end
 
     def self.to_line(hash)
