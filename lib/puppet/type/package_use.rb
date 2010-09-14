@@ -10,6 +10,8 @@ Puppet::Type.newtype(:package_use) do
 
     newparam(:package) do
         desc "The package"
+
+        isnamevar
     end
 
     newproperty(:use_flags) do
@@ -46,7 +48,7 @@ Puppet::Type.newtype(:package_use) do
 
     end
 
-    newproperty(:target, :namevar => true) do
+    newproperty(:target) do
         desc "The location of the package.use file"
 
         defaultto {
