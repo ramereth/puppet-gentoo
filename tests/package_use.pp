@@ -1,18 +1,17 @@
 # test basic
 package_use { 'app-admin/puppet':
-    package     => "app-admin/puppet",
     use_flags   => ['augeas', '-rrdtool'],
-    target      => "/tmp/puppet",
+    target      => "/tmp/test-package-use",
 }
 
 package_use { 'app-editors/vim':
     use_flags   => "-perl",
-    target      => "/tmp/vim",
+    target      => "/tmp/test-package-use",
 }
 
 # canonical name
 package_use { 'mysql-client':
     package     => "dev-db/mysql",
     use_flags   => ['minimal', '-perl'],
-    target      => "/tmp/mysql",
+    target      => "/tmp/test-package-use",
 }
