@@ -15,6 +15,7 @@ Puppet::Type.type(:package_keywords).provide(:parsed,
         :joiner => ' ',
         :rts    => true do |line|
         hash = {}
+        # if we have a package & and a keyword
         if line.sub!(/^(\S+)\s+(.*)\s*$/, '')
             hash[:name] = $1
             keywords = $2
@@ -22,6 +23,9 @@ Puppet::Type.type(:package_keywords).provide(:parsed,
             unless keywords == ""
                 hash[:keywords] = keywords.split(/\s+/)
             end
+        # just a package
+        elsif line.sub!(/^(\S+)\s*$/, '')
+            hash[:name] = $1
         else
             raise Puppet::Error, "Could not match '%s'" % line
         end
