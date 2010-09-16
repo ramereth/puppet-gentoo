@@ -44,7 +44,7 @@ Puppet::Type.type(:package_use).provide(:parsed,
     def self.to_line(hash)
         return super unless hash[:record_type] == :parsed
         unless hash[:name] and hash[:name] != :absent
-            raise ArgumentError, "package is a required attribute for packageuse"
+            raise ArgumentError, "package is a required attribute for package_use"
         end
 
         str = hash[:name]
