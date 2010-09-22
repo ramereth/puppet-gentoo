@@ -19,6 +19,10 @@ ACCEPT_LICENSE="<%= gentoo_accept_license %>"
 PORTAGE_BINHOST="<%= gentoo_binhost %>"
 <% end -%>
 
+<% if gentoo_emerge_opts != nil -%>
+EMERGE_DEFAULT_OPTS="<%= gentoo_emerge_opts %>"
+<% end -%>
+
 CHOST="<%= hardwaremodel %>-pc-linux-gnu"
 CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"

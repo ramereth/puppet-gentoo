@@ -42,4 +42,10 @@ class gentoo::params {
         ''      => '$ACCEPT_LICENSE',
         default => "\$ACCEPT_LICENSE $gentoo_accept_license",
     }
+
+# EMERGE_DEFAULT_OPTS
+    $emerge_opts = $gentoo_emerge_opts ? {
+        ''      => undef,
+        default => $gentoo_emerge_opts,
+    }
 }

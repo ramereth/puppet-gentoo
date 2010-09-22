@@ -10,4 +10,5 @@ class gentoo {
     $gentoo_binhost     = $gentoo::params::binhost
     $gentoo_portdir_overlay = $gentoo::params::portdir_overlay
     $gentoo_accept_license  = $gentoo::params::accept_license
+    $gentoo_emerge_opts = $gentoo::params::emerge_opts
 }
