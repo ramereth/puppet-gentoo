@@ -16,3 +16,8 @@ class test_params {
 include test_params
 # test no params
 # include gentoo::makeconf
+
+# adding random content
+gentoo::makeconf::setting{ "config_protect_mask":
+    content => "CONFIG_PROTECT_MASK=\"/etc/init.d\"",
+}
