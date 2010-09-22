@@ -1,7 +1,6 @@
 class gentoo::makeconf inherits gentoo {
     include concat::setup
-    #$makeconf = "/etc/make.conf"
-    $makeconf = "/tmp/make.conf"
+    $makeconf = "/etc/make.conf"
 
     concat { $makeconf:
         owner => root,
