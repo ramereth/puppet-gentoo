@@ -1,0 +1,26 @@
+# Use flags
+USE="<%= gentoo_global_use %>"
+
+# Gentoo Features
+FEATURES="<%= gentoo_features %>"
+
+# Mirrors
+GENTOO_MIRRORS="<%= gentoo_mirrors %>"
+SYNC="<%= gentoo_sync %>"
+
+# Portage overlays
+PORTDIR_OVERLAY="<%= gentoo_portdir_overlay %>"
+
+# Licenses we accept outside of the norm
+ACCEPT_LICENSE="<%= gentoo_accept_license %>"
+
+<% if gentoo_binhost != nil -%>
+# Binhost
+PORTAGE_BINHOST="<%= gentoo_binhost %>"
+<% end -%>
+
+CHOST="<%= hardwaremodel %>-pc-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+
+MAKEOPTS="-j<%= processorcount %>"
