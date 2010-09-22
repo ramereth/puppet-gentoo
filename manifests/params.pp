@@ -4,7 +4,7 @@ class gentoo::params {
 # Global use flags
     $global_use = $gentoo_global_use ? {
         ''      => '$USE',
-        default => "$USE $gentoo_global_use",
+        default => "\$USE $gentoo_global_use",
     }
 
 # FEATURES
