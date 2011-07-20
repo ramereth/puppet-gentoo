@@ -1,15 +1,15 @@
 Puppet::Type.newtype(:package_use) do
     @doc = "Set use flags for a package
     
-            package_use { 'puppet':
-                package   => 'app-admin/puppet',
+            package_use { 'app-admin/puppet':
                 use_flags => ['augeas', '-rrdtool'],
+                target    => 'puppet',
             }"
 
     ensurable
 
-    newparam(:package) do
-        desc "The package"
+    newparam(:name) do
+        desc "The package name"
 
         isnamevar
     end

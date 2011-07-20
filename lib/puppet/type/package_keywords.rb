@@ -2,14 +2,14 @@ Puppet::Type.newtype(:package_keywords) do
     @doc = "Set keywords for a package
     
             package_keywords { 'app-admin/puppet':
-                package   => 'app-admin/puppet',
                 keywords  => ['~x86', '-hppa'],
+                target    => 'puppet',
             }"
 
     ensurable
 
-    newproperty(:package) do
-        desc "The package"
+    newparam(:name) do
+        desc "The package name"
 
         isnamevar
     end

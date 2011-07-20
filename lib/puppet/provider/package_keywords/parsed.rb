@@ -11,7 +11,7 @@ Puppet::Type.type(:package_keywords).provide(:parsed,
     text_line :comment, :match => /^#/;
     text_line :blank, :match => /^\s*$/;
  
-    record_line :parsed, :fields => %w{package keywords},
+    record_line :parsed, :fields => %w{name keywords},
         :joiner => ' ',
         :rts    => true do |line|
         hash = {}

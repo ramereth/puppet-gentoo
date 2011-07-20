@@ -11,7 +11,7 @@ Puppet::Type.type(:package_use).provide(:parsed,
     text_line :comment, :match => /^#/;
     text_line :blank, :match => /^\s*$/;
  
-    record_line :parsed, :fields => %w{package use_flags},
+    record_line :parsed, :fields => %w{name use_flags},
         :joiner => ' ',
         :rts    => true do |line|
         hash = {}
