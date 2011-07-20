@@ -8,7 +8,7 @@ Puppet::Type.newtype(:package_keywords) do
 
     ensurable
 
-    newparam(:package) do
+    newproperty(:package) do
         desc "The package"
 
         isnamevar
