@@ -15,15 +15,18 @@ class gentoo::makeconf inherits gentoo {
     }
 }
 
-define gentoo::makeconf::setting( $content="", $order=10) {
-    if $content == "" {
-        $body = $name
-    } else {
-        $body = $content
+define gentoo::makeconf::setting( $source="", $content="", $order=10) {
+    if $content {
+        concat::fragment { "makeconf_$name":
+            target  => "/etc/make.conf",
+            order   => $order,
+            content => "$content\n",
     }
 
-    concat::fragment { "makeconf_$name":
-        target  => "/etc/make.conf",
-        content => "$body\n",
+    if $source {
+        concat::fragment { "makeconf_$name":
+            target  => "/etc/make.conf",
+            order   => $order,
+            source  => $source,
     }
 }
