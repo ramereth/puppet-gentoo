@@ -13,6 +13,11 @@ class gentoo {
     $gentoo_accept_license  = $gentoo::params::accept_license
     $gentoo_emerge_opts = $gentoo::params::emerge_opts
 
+    # Add requires for Package provider
+    Package {
+        require => Concat["/etc/make.conf"],
+    }
+
     # make.conf
     concat { "/etc/make.conf":
         owner => root,
