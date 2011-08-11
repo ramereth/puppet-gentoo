@@ -3,9 +3,9 @@ define gentoo::keywords ($source="", $ensure=present) {
         "gentoo_keywords_${name}":
             path    => "/etc/portage/package.keywords/${name}",
             source  => "${source}",
-            ensure  => $ensure,
-            require => File["/etc/portage/package.keywords"];
-        "/etc/portage/package.keywords":
-            ensure  => directory;
+            ensure  => $ensure;
+    #        require => File["/etc/portage/package.keywords"];
+    #    "/etc/portage/package.keywords":
+    #        ensure  => directory;
     }
 }

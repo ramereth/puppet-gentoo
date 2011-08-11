@@ -21,7 +21,7 @@ class gentoo {
     }
 
     concat::fragment { "makeconf_base":
-        target  => $makeconf,
+        target  => "/etc/make.conf",
         content => template("gentoo/makeconf.base.conf.erb"),
         order   => 00,
     }

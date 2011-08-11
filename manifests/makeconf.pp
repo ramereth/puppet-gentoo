@@ -1,5 +1,5 @@
-define gentoo::makeconf( $source="", $content="", comment="", $order=10,
-                         ensure=present ) {
+define gentoo::makeconf( $source="", $content="", $comment="", $order=10,
+                         $ensure=present ) {
     include concat::setup
 
     if $content {
@@ -7,7 +7,8 @@ define gentoo::makeconf( $source="", $content="", comment="", $order=10,
             target  => "/etc/make.conf",
             order   => $order,
             ensure  => $ensure,
-            content => template("gentoo/make.conf.erb"),
+            content => template("gentoo/makeconf.conf.erb"),
+        }
     }
 
     if $source {
@@ -16,5 +17,6 @@ define gentoo::makeconf( $source="", $content="", comment="", $order=10,
             order   => $order,
             ensure  => $ensure,
             source  => $source,
+        }
     }
 }
