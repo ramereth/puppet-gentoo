@@ -27,7 +27,7 @@ class gentoo::params {
 
 # PORTAGE_BINHOST
     $binhost = $gentoo_binhost ? {
-        ''      => undef,
+        ''      => '',
         default => $gentoo_binhost,
     }
 
@@ -45,7 +45,7 @@ class gentoo::params {
 
 # EMERGE_DEFAULT_OPTS
     $emerge_opts = $gentoo_emerge_opts ? {
-        ''      => undef,
+        ''      => '',
         default => $gentoo_emerge_opts,
     }
 }
