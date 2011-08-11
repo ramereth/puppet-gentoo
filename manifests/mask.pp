@@ -4,8 +4,6 @@ define gentoo::mask ($source="", $ensure=present) {
             path    => "/etc/portage/package.mask/${name}",
             source  => "${source}",
             ensure  => $ensure,
-            require => File["/etc/portage/package.mask"];
-        "/etc/portage/package.mask":
-            ensure  => directory;
+            require => File["/etc/portage/package.mask"],
     }
 }

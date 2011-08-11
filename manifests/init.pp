@@ -18,6 +18,19 @@ class gentoo {
         require => Concat["/etc/make.conf"],
     }
 
+    file {
+        "/etc/portage/package.keywords":
+            ensure  => directory;
+        "/etc/portage/package.mask":
+            ensure  => directory;
+        "/etc/portage/package.unmask":
+            ensure  => directory;
+        "/etc/portage/package.use":
+            ensure  => directory;
+        "/etc/portage/postsync.d":
+            ensure  => directory;
+    }
+
     # make.conf
     concat { "/etc/make.conf":
         owner => root,
