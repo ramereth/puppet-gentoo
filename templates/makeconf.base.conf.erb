@@ -1,26 +1,26 @@
 # Use flags
-USE="<%= gentoo_global_use %>"
+USE="<%= global_use %>"
 
 # Gentoo Features
-FEATURES="<%= gentoo_features %>"
+FEATURES="<%= features %>"
 
 # Mirrors
-GENTOO_MIRRORS="<%= gentoo_mirrors %>"
-SYNC="<%= gentoo_sync %>"
+GENTOO_MIRRORS="<%= mirrors %>"
+SYNC="<%= sync %>"
 
 # Portage overlays
-PORTDIR_OVERLAY="<%= gentoo_portdir_overlay %>"
+PORTDIR_OVERLAY="<%= portdir_overlay %>"
 
 # Licenses we accept outside of the norm
-ACCEPT_LICENSE="<%= gentoo_accept_license %>"
+ACCEPT_LICENSE="<%= accept_license %>"
 
-<% if gentoo_binhost != nil -%>
+<% if binhost != nil -%>
 # Binhost
-PORTAGE_BINHOST="<%= gentoo_binhost %>"
+PORTAGE_BINHOST="<%= binhost %>"
 <% end -%>
 
-<% if gentoo_emerge_opts != nil -%>
-EMERGE_DEFAULT_OPTS="<%= gentoo_emerge_opts %>"
+<% if emerge_opts != nil -%>
+EMERGE_DEFAULT_OPTS="<%= emerge_opts %>"
 <% end -%>
 
 CHOST="<%= hardwaremodel %>-pc-linux-gnu"
