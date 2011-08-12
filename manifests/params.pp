@@ -1,51 +1,28 @@
 class gentoo::params {
-# settings that the user can define (if not defined, defaults set here apply).
+    # settings that the user can define (if not defined, defaults set here
+    # apply).
 
-# Global use flags
-    $global_use = $gentoo_global_use ? {
-        ''      => '$USE',
-        default => "\$USE $gentoo_global_use",
-    }
+    # Global use flags
+    $global_use = '$USE'
 
-# FEATURES
-    $features = $gentoo_features ? {
-        ''      => '$FEATURES',
-        default => "\$FEATURES $gentoo_features",
-    }
+    # FEATURES
+    $features   = '$FEATURES'
 
-# GENTOO_MIRRORS
-    $mirrors = $gentoo_mirrors ? {
-        ''      => "http://distfiles.gentoo.org",
-        default => $gentoo_mirrors,
-    }
+    # GENTOO_MIRRORS
+    $mirrors    = "http://distfiles.gentoo.org"
 
-# SYNC
-    $sync = $gentoo_sync ? {
-        ''      => "rsync://rsync.gentoo.org/gentoo-portage",
-        default => $gentoo_sync,
-    }
+    # SYNC
+    $sync       = "rsync://rsync.gentoo.org/gentoo-portage"
 
-# PORTAGE_BINHOST
-    $binhost = $gentoo_binhost ? {
-        ''      => '',
-        default => $gentoo_binhost,
-    }
+    # PORTAGE_BINHOST
+    $binhost    = ""
 
-# PORTDIR_OVERLAY
-    $portdir_overlay = $gentoo_portdir_overlay ? {
-        ''      => '$PORTDIR_OVERLAY',
-        default => "\$PORTDIR_OVERLAY $gentoo_portdir_overlay",
-    }
+    # PORTDIR_OVERLAY
+    $portdir_overlay    = '$PORTDIR_OVERLAY'
 
-# ACCEPT_LICENSE
-    $accept_license = $gentoo_accept_license ? {
-        ''      => '$ACCEPT_LICENSE',
-        default => "\$ACCEPT_LICENSE $gentoo_accept_license",
-    }
+    # ACCEPT_LICENSE
+    $accept_license     = '$ACCEPT_LICENSE'
 
-# EMERGE_DEFAULT_OPTS
-    $emerge_opts = $gentoo_emerge_opts ? {
-        ''      => '',
-        default => $gentoo_emerge_opts,
-    }
+    # EMERGE_DEFAULT_OPTS
+    $emerge_opts        = ""
 }
