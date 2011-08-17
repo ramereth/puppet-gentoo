@@ -31,6 +31,12 @@ class gentoo (
             ensure  => directory;
     }
 
+    exec { "emerge_changed_use":
+        command     => "/usr/bin/emerge --reinstall=changed-use @world",
+        require     => Concat["/etc/make.conf"],
+        refreshonly => true,
+    }
+
     # make.conf
     concat { "/etc/make.conf":
         owner => root,
