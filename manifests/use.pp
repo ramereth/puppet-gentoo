@@ -4,6 +4,6 @@ define gentoo::use ($source, $ensure=present) {
             path    => "/etc/portage/package.use/${name}",
             source  => $source,
             ensure  => $ensure,
-            require => File["/etc/portage/package.use"],
+    #        require => File["/etc/portage/package.use"],
     }
 }

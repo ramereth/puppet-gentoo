@@ -4,6 +4,6 @@ define gentoo::unmask ($source, $ensure=present) {
             path    => "/etc/portage/package.unmask/${name}",
             source  => "${source}",
             ensure  => $ensure,
-            require => File["/etc/portage/package.unmask"],
+#            require => File["/etc/portage/package.unmask"],
     }
 }
