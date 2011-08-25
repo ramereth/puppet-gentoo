@@ -39,9 +39,10 @@ class gentoo (
 
     # make.conf
     concat { "/etc/make.conf":
-        owner => root,
-        group => root,
-        mode  => 644,
+        owner   => root,
+        group   => root,
+        mode    => 644,
+        notify  => Exec["emerge_changed_use"],
     }
 
     concat::fragment { "makeconf_base":
