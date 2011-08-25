@@ -10,8 +10,7 @@ class gentoo (
     ) inherits gentoo::params {
 
     include concat::setup
-    # load all variables
-    require gentoo::params
+    include gentoo::params
 
     # Add requires for Package provider
     Package {
