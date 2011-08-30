@@ -1,6 +1,4 @@
 define gentoo::mask ($source="", $ensure=present) {
-    include gentoo
-
     file {
         "gentoo_mask_${name}":
             path    => "/etc/portage/package.mask/${name}",
