@@ -34,24 +34,6 @@ describe type_class do
     @class.key_attributes.should == [:name]
   end
 
-  describe "when validating the name param" do
-
-    valid_atoms   = %w{=sys-devel/gcc-4.3.2-r4 >=app-crypt/gnupg-1.9 net-analyzer/nagios-nrpe}
-    invalid_atoms = %w{sys-devel-gcc =sys-devel/gcc}
-
-    valid_atoms.each do |atom|
-      it "should accept #{atom} as a valid name" do
-        lambda { @class.new(:name => atom) }.should_not raise_error
-      end
-    end
-
-    invalid_atoms.each do |atom|
-      it "should reject #{atom} as an invalid name" do
-        lambda { @class.new(:name => atom) }.should raise_error
-      end
-    end
-  end
-
   describe "when validating the use_flags property" do
     it "should accept a string for use_flags" do
       lambda { @class.new(:name => "sys-devel/gcc", :use_flags => "openmp") }.should_not raise_error

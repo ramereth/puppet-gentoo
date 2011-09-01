@@ -1,5 +1,5 @@
 require 'puppet/provider/parsedfile'
-
+ 
 Puppet::Type.type(:package_use).provide(:parsed,
     :parent => Puppet::Provider::ParsedFile,
     :default_target => "/etc/portage/package.use/default",
@@ -7,10 +7,10 @@ Puppet::Type.type(:package_use).provide(:parsed,
 ) do
 
     desc "The package_use provider that uses the ParsedFile class"
-
+ 
     text_line :comment, :match => /^#/;
     text_line :blank, :match => /^\s*$/;
-
+ 
     record_line :parsed, :fields => %w{name use_flags},
         :joiner => ' ',
         :rts    => true do |line|
@@ -28,11 +28,11 @@ Puppet::Type.type(:package_use).provide(:parsed,
         else
             raise Puppet::Error, "Could not match '%s'" % line
         end
-
+ 
         if hash[:use_flags] == ""
             hash.delete(:use_flags)
         end
-
+ 
         hash
     end
 

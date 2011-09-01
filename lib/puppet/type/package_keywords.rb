@@ -1,3 +1,4 @@
+require 'puppet/util/portage'
 Puppet::Type.newtype(:package_keywords) do
   @doc = "Set keywords for a package.
 
@@ -14,14 +15,7 @@ Puppet::Type.newtype(:package_keywords) do
     isnamevar
 
     validate do |value|
-      prefix  = %r{[<>=]|[<>]=}
-      atom = %r{[a-zA-Z-]+/[a-zA-Z-]+?}
-      version   = %r{-[\d.]+[\w-]+}
-
-      base_atom = Regexp.new("^" + atom.to_s + "$")
-      versioned_atom = Regexp.new("^" + prefix.to_s + atom.to_s + version.to_s + "$")
-
-      unless value =~ base_atom or value =~ versioned_atom
+      unless Puppet::Util::Portage.valid_atom? value
         raise Puppet::Error, "name must be a properly formatted atom, see man portage(5) for more information"
       end
     end
