@@ -1,0 +1,5 @@
+name 'puppet-gentoo'
+version '0.0.1'
+license 'GPLv2'
+summary 'Puppet types and providers for Gentoo portage'
+project_page 'https://github.com/ramereth/puppet-gentoo'
