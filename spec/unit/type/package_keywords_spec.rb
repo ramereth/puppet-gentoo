@@ -15,7 +15,7 @@ describe type_class do
 
   describe "when validating attributes" do
     params     = [:name]
-    properties = [:keywords, :target]
+    properties = [:keywords, :target, :ensure]
 
     params.each do |param|
       it "should have the #{param} param" do
