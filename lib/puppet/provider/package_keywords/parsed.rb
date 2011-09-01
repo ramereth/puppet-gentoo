@@ -1,15 +1,12 @@
-require 'puppet/provider/parsedfile'
+require 'puppet/provider/portagefile'
 
 Puppet::Type.type(:package_keywords).provide(:parsed,
-    :parent => Puppet::Provider::ParsedFile,
+    :parent => Puppet::Provider::PortageFile,
     :default_target => "/etc/portage/package.keywords/default",
     :filetype => :flat
 ) do
 
     desc "The package_keywords provider that uses the ParsedFile class"
-
-    text_line :comment, :match => /^#/;
-    text_line :blank, :match => /^\s*$/;
 
     record_line :parsed, :fields => %w{name keywords},
         :joiner => ' ',
@@ -35,14 +32,6 @@ Puppet::Type.type(:package_keywords).provide(:parsed,
         end
 
         hash
-    end
-
-    def flush
-        # Ensure the target directory exists before creating file
-        unless File.exist?(dir = File.dirname(target))
-            Dir.mkdir(dir)
-        end
-        super
     end
 
     def self.to_line(hash)
