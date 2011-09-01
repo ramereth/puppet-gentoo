@@ -52,8 +52,13 @@ describe type_class do
     it "should default to the provider's default target" do
       @class.new(:name => "sys-devel/gcc").should(:target).should == "/etc/portage/package.keywords/defaulttarget"
     end
-    it "should munge targets that do not specify a default path" do
+
+    it "should munge targets that do not specify a fully qualified path" do
       @class.new(:name => "sys-devel/gcc", :target => "gcc").should(:target).should == "/etc/portage/package.keywords/gcc"
+    end
+
+    it "should not munge fully qualified targets" do
+      @class.new(:name => "sys-devel/gcc", :target => "/tmp/gcc").should(:target).should == "/tmp/gcc"
     end
   end
 end
