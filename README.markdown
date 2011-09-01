@@ -22,5 +22,5 @@ TODO
 Contributors
 ============
 
-Lance Albertson <lance@osuosl.org>
-Russell Haering <russell_h@osuosl.org>
+* Lance Albertson <lance@osuosl.org>
+* Russell Haering <russell_h@osuosl.org>
