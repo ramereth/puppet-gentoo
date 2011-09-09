@@ -1,3 +1,5 @@
+# Common base class for gentoo package_* providers. It aggregates some of the
+# boilerplate that's shared between the providers.
 require 'puppet/provider/parsedfile'
 class Puppet::Provider::PortageFile < Puppet::Provider::ParsedFile
 
@@ -10,5 +12,22 @@ class Puppet::Provider::PortageFile < Puppet::Provider::ParsedFile
           Dir.mkdir(dir)
       end
       super
+  end
+
+  def self.build_line(hash, sym)
+    unless hash[:name] and hash[:name] != :absent
+      raise ArgumentError, "name is a required attribute of portagefile providers"
+    end
+
+    str = hash[:name]
+
+    if hash.include? sym
+      if hash[sym].is_a? Array
+        str << " " << hash[sym].join(" ")
+      else
+        str << " " << hash[sym]
+      end
+    end
+    str
   end
 end

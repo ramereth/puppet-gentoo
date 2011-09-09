@@ -1,3 +1,4 @@
+# Trivial provider for managing a list of depend atoms to mask
 require 'puppet/provider/portagefile'
  
 Puppet::Type.type(:package_mask).provide(:parsed,

@@ -1,3 +1,4 @@
+# Trivial provider for managing a list of depend atoms to unmask
 require 'puppet/provider/portagefile'
  
 Puppet::Type.type(:package_unmask).provide(:parsed,
