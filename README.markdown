@@ -1,10 +1,15 @@
-Puppet Gentoo Module
-=================
+Puppet Gentoo Portage Module
+============================
 
 Provides Gentoo portage features for Puppet.
 
 History
 -------
+
+2012-10-20 : adrienthebo
+
+  * Version 0.1.0 : Initial forge release with expanded features and tests.
+
 2011-08-31 : ramereth
 
   * Version 0.0.1 : Initial pre-release
@@ -47,15 +52,20 @@ keywords can be either a string or an array of strings.
       target  => 'tree',
     }"
 
-TODO
-
 Limitations
 -----------
 
-TODO
+These types and providers are built around the ParsedFile provider and are
+subject to the same limitations.
 
 Contributors
 ============
 
-* Lance Albertson <lance@osuosl.org>
-* Russell Haering <russell_h@osuosl.org>
+Original code is credited to OSUOSL and staff. Additional work done by Adrien
+Thebo.
+
+  * Lance Albertson (lance@osuosl.org)
+  * Russell Haering (russell\_h@osuosl.org)
+  * Adrien Thebo (adrien@puppetlabs.com)
+
+
