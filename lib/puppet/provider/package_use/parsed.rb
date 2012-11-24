@@ -1,4 +1,5 @@
-require 'puppet/provider/parsedfile'
+require 'puppet/util/portage'
+require 'puppet/provider/portagefile'
  
 Puppet::Type.type(:package_use).provide(:parsed,
   :parent => Puppet::Provider::PortageFile,
