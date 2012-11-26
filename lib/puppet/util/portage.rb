@@ -10,13 +10,13 @@ module Puppet::Util::Portage
   #
   # @see http://www.linuxmanpages.com/man5/ebuild.5.php#lbAE 'man 5 ebuild section DEPEND'
   def self.valid_atom?(atom)
-    atom_prefix  = %r{[<>=]|[<>]=}
-    atom_name    = %r{[a-zA-Z-]+/[a-zA-Z-]+?}
-    atom_version = %r{-[\d.]+[\w-]+}
+    atom_prefix  = '(?:[<>=]|[<>]=)'
+    atom_name    = '(?:[a-zA-Z-]+/[a-zA-Z-]+?)'
+    atom_version = '(?:-[\d.]+[\w-]+)'
 
-    base_atom = Regexp.new("^" + atom_name.to_s + "$")
-    versioned_atom = Regexp.new("^" + atom_prefix.to_s + atom_name.to_s + atom_version.to_s + "$")
-    depend = Regexp.union(base_atom, versioned_atom)
+    base_atom      = Regexp.new("^#{atom_name}$")
+    versioned_atom = Regexp.new("^#{atom_prefix}#{atom_name}#{atom_version}$")
+    depend         = Regexp.union(base_atom, versioned_atom)
 
     # Normalize the regular expression output to a boolean
     !!(atom =~ depend)
