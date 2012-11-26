@@ -18,6 +18,7 @@ module Puppet::Util::Portage
     versioned_atom = Regexp.new("^" + atom_prefix.to_s + atom_name.to_s + atom_version.to_s + "$")
     depend = Regexp.union(base_atom, versioned_atom)
 
-    atom =~ depend
+    # Normalize the regular expression output to a boolean
+    !!(atom =~ depend)
   end
 end
