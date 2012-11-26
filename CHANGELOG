@@ -1,0 +1,17 @@
+CHANGELOG
+=========
+
+1.0.0
+-----
+
+This is a backwards incompatible feature and bugfix release.
+
+  * Renamed all classes and defines from 'gentoo' to 'portage'
+  * Bugfixes for the package_use parsedfile provider
+  * Metadata corrections to add concat as a dependency
+  * Site specific files removed
+  * Removed legacy defined types for package.* entries
+  * Removed unusable localegen and category defined types
+
+Major thanks to Theo Chatzimichos testing the module and reporting/fixing
+bugs.
