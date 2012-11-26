@@ -4,6 +4,8 @@ CHANGELOG
 1.0.0
 -----
 
+2012-11-26
+
 This is a backwards incompatible feature and bugfix release.
 
   * Renamed all classes and defines from 'gentoo' to 'portage'
@@ -15,3 +17,19 @@ This is a backwards incompatible feature and bugfix release.
 
 Major thanks to Theo Chatzimichos testing the module and reporting/fixing
 bugs.
+
+
+0.1.0
+-----
+
+2012-10-20
+
+  * Initial forge release with expanded features and tests.
+
+0.0.1
+-----
+
+2011-08-31
+
+  * Initial pre-release
+

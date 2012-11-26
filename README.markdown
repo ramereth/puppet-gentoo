@@ -3,17 +3,6 @@ Puppet Gentoo Portage Module
 
 Provides Gentoo portage features for Puppet.
 
-History
--------
-
-2012-10-20 : adrienthebo
-
-  * Version 0.1.0 : Initial forge release with expanded features and tests.
-
-2011-08-31 : ramereth
-
-  * Version 0.0.1 : Initial pre-release
-
 Usage
 -----
 
