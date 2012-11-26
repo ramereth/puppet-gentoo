@@ -1,3 +1,0 @@
-CHOST="i686-pc-linux-gnu"
-CFLAGS="-march=pentium4 -O2 -pipe -fomit-frame-pointer"
-CXXFLAGS="${CFLAGS}"

@@ -1,5 +1,0 @@
-
-# Local portage repository
-GENTOO_MIRRORS="http://gentoo.osuosl.org/ http://oslportage.osuosl.org/"
-SYNC="rsync://oslportage.osuosl.org/portage/"
-
