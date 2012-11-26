@@ -1,4 +1,4 @@
-class gentoo::params {
+class portage::params {
   # settings that the user can define (if not defined, defaults set here
   # apply).
 

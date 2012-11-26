@@ -1,7 +1,7 @@
-define gentoo::postsync ($content, $ensure=present) {
-  file { "gentoo_postsync_${name}":
+define portage::postsync ($content, $ensure=present) {
+  file { "portage_postsync_${name}":
     path  => "/etc/portage/postsync.d/${name}",
-    content => template("gentoo/postsync.sh.erb"),
+    content => template("portage/postsync.sh.erb"),
     mode  => 755,
     ensure  => $ensure,
     require => File["/etc/portage/postsync.d"],

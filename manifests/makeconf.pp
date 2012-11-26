@@ -1,4 +1,4 @@
-define gentoo::makeconf(
+define portage::makeconf(
   $source  = "",
   $content = "",
   $comment = "",
@@ -12,7 +12,7 @@ define gentoo::makeconf(
       target  => "/etc/make.conf",
       order   => $order,
       ensure  => $ensure,
-      content => template("gentoo/makeconf.conf.erb"),
+      content => template("portage/makeconf.conf.erb"),
     }
   }
 
