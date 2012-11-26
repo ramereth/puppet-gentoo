@@ -58,6 +58,12 @@ Limitations
 These types and providers are built around the ParsedFile provider and are
 subject to the same limitations.
 
+See Also
+--------
+
+  * man 5 portage: http://www.linuxmanpages.com/man5/portage.5.php
+  * man 5 ebuild: http://www.linuxmanpages.com/man5/ebuild.5.php
+
 Contributors
 ============
 
