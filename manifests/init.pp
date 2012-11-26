@@ -40,7 +40,7 @@ class gentoo (
   concat { "/etc/make.conf":
     owner   => root,
     group   => root,
-    mode  => 644,
+    mode    => 644,
     notify  => Exec["emerge_changed_use"],
   }
 
