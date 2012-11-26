@@ -67,11 +67,9 @@ See Also
 Contributors
 ============
 
-Original code is credited to OSUOSL and staff. Additional work done by Adrien
-Thebo.
-
   * Lance Albertson (lance@osuosl.org)
   * Russell Haering (russell\_h@osuosl.org)
   * Adrien Thebo (adrien@puppetlabs.com)
+  * Theo Chatzimichos (tampakrap@gentoo.org)
 
 
