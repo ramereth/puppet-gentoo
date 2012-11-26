@@ -1,28 +1,28 @@
 class gentoo::params {
-    # settings that the user can define (if not defined, defaults set here
-    # apply).
+  # settings that the user can define (if not defined, defaults set here
+  # apply).
 
-    # Global use flags
-    $global_use = '$USE'
+  # Global use flags
+  $global_use = '$USE'
 
-    # FEATURES
-    $features   = '$FEATURES'
+  # FEATURES
+  $features   = '$FEATURES'
 
-    # GENTOO_MIRRORS
-    $mirrors    = "http://distfiles.gentoo.org"
+  # GENTOO_MIRRORS
+  $mirrors    = "http://distfiles.gentoo.org"
 
-    # SYNC
-    $sync       = "rsync://rsync.gentoo.org/gentoo-portage"
+  # SYNC
+  $sync       = "rsync://rsync.gentoo.org/gentoo-portage"
 
-    # PORTAGE_BINHOST
-    $binhost    = ""
+  # PORTAGE_BINHOST
+  $binhost    = ""
 
-    # PORTDIR_OVERLAY
-    $portdir_overlay    = '$PORTDIR_OVERLAY'
+  # PORTDIR_OVERLAY
+  $portdir_overlay    = '$PORTDIR_OVERLAY'
 
-    # ACCEPT_LICENSE
-    $accept_license     = '$ACCEPT_LICENSE'
+  # ACCEPT_LICENSE
+  $accept_license     = '$ACCEPT_LICENSE'
 
-    # EMERGE_DEFAULT_OPTS
-    $emerge_opts        = ""
+  # EMERGE_DEFAULT_OPTS
+  $emerge_opts        = ""
 }

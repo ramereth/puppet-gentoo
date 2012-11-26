@@ -1,22 +1,27 @@
-define gentoo::makeconf( $source="", $content="", $comment="", $order=10,
-                         $ensure=present ) {
-    include concat::setup
+define gentoo::makeconf(
+  $source  = "",
+  $content = "",
+  $comment = "",
+  $order   = 10,
+  $ensure = present
+) {
+  include concat::setup
 
-    if $content {
-        concat::fragment { "makeconf_$name":
-            target  => "/etc/make.conf",
-            order   => $order,
-            ensure  => $ensure,
-            content => template("gentoo/makeconf.conf.erb"),
-        }
+  if $content {
+    concat::fragment { "makeconf_$name":
+      target  => "/etc/make.conf",
+      order   => $order,
+      ensure  => $ensure,
+      content => template("gentoo/makeconf.conf.erb"),
     }
+  }
 
-    if $source {
-        concat::fragment { "makeconf_$name":
-            target  => "/etc/make.conf",
-            order   => $order,
-            ensure  => $ensure,
-            source  => $source,
-        }
+  if $source {
+    concat::fragment { "makeconf_$name":
+      target  => "/etc/make.conf",
+      order   => $order,
+      ensure  => $ensure,
+      source  => $source,
     }
+  }
 }
