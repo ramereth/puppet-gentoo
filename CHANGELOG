@@ -14,6 +14,7 @@ This is a backwards incompatible feature and bugfix release.
   * Site specific files removed
   * Removed legacy defined types for package.* entries
   * Removed unusable localegen and category defined types
+  * (portage-#7) make.conf moved from /etc/make.conf to /etc/portage/make.conf
 
 Major thanks to Theo Chatzimichos testing the module and reporting/fixing
 bugs.
