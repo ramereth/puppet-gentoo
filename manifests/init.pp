@@ -7,6 +7,7 @@ class portage (
   $portdir_overlay = $portage::params::portdir_overlay,
   $accept_license  = $portage::params::accept_license,
   $emerge_opts     = $portage::params::emerge_opts
+  $make_conf       = $portage::params::make_conf,
 ) inherits portage::params {
 
   include concat::setup
@@ -14,7 +15,7 @@ class portage (
 
   # Add requires for Package provider
   Package {
-    require => Concat["/etc/make.conf"],
+    require => Concat[$make_conf],
   }
 
   file {
@@ -32,12 +33,11 @@ class portage (
 
   exec { "emerge_changed_use":
     command   => "/usr/bin/emerge --reinstall=changed-use @world",
-    require   => Concat["/etc/make.conf"],
+    require   => Concat[$make_conf],
     refreshonly => true,
   }
 
-  # make.conf
-  concat { "/etc/make.conf":
+  concat { $make_conf:
     owner   => root,
     group   => root,
     mode    => 644,
@@ -45,7 +45,7 @@ class portage (
   }
 
   concat::fragment { "makeconf_base":
-    target  => "/etc/make.conf",
+    target  => $make_conf,
     content => template("portage/makeconf.base.conf.erb"),
     order   => 00,
   }

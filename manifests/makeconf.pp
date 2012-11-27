@@ -6,10 +6,11 @@ define portage::makeconf(
   $ensure = present
 ) {
   include concat::setup
+  include portage
 
   if $content {
-    concat::fragment { "makeconf_$name":
-      target  => "/etc/make.conf",
+    concat::fragment { "makeconf_${name}":
+      target  => $portage::make_conf,
       order   => $order,
       ensure  => $ensure,
       content => template("portage/makeconf.conf.erb"),
@@ -17,8 +18,8 @@ define portage::makeconf(
   }
 
   if $source {
-    concat::fragment { "makeconf_$name":
-      target  => "/etc/make.conf",
+    concat::fragment { "makeconf_${name}":
+      target  => $portage::make_conf,
       order   => $order,
       ensure  => $ensure,
       source  => $source,
