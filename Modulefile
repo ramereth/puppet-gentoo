@@ -1,7 +1,7 @@
 name 'adrien-portage'
-version '1.0.0-rc1'
+version '1.0.0-rc2'
 license 'GPLv2'
 summary 'Puppet types and providers for Gentoo portage'
 project_page 'https://github.com/adrienthebo/puppet-portage'
 
-dependency 'ripienaar/concat' '0.2.x'
+dependency 'ripienaar/concat', '0.2.x'
