@@ -1,21 +1,12 @@
 define portage::package (
     $package = $title,
-    $version = undef,
     $use = undef,
     $use_target = undef,
     $keywords = undef,
     $keywords_target = undef,
-    $slot = undef,
     $ensure = undef,
     $target = undef,
   ) {
-  if $version {
-    $package_full = "=$package-$version"
-    notify{ $package_full : }
-  }
-  else {
-    $package_full = $package
-  }
   if $target {
     if $use_target != undef {
       $use_target = $target
@@ -31,20 +22,20 @@ define portage::package (
     }
   }
   if $keywords {
-    package_keywords { $package_full:
+    package_keywords { $package:
       keywords => $keywords,
       target   => $keywords_target,
       before   => Package[$package],
     }
   }
   if $unmask {
-    package_unmask { $package_full:
+    package_unmask { $package:
       target => $unmask_target,
       before => Package[$package],
     }
   }
   if $mask {
-    package_mask { $package_full:
+    package_mask { $package:
       target => $mask_target,
       before => Package[$package],
     }
