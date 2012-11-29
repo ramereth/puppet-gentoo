@@ -34,22 +34,26 @@ define portage::package (
     package_keywords { $package_full:
       keywords => $keywords,
       target   => $keywords_target,
+      before   => Package[$package],
     }
   }
   if $unmask {
     package_unmask { $package_full:
-    target => $unmask_target,
+      target => $unmask_target,
+      before => Package[$package],
     }
   }
   if $mask {
     package_mask { $package_full:
-    target => $mask_target,
+      target => $mask_target,
+      before => Package[$package],
     }
   }
   if $use {
     package_use { $package:
       use_flags => $use,
       target    => $use_target,
+      before    => Package[$package],
       notify    => Exec["changed_useflags"],
     }
     exec {"changed_useflags":
@@ -61,5 +65,3 @@ define portage::package (
     ensure => $ensure,
   }
 }
-
-# vim: set autoindent softtabstop=2 expandtab textwidth=80 shiftwidth=2:
