@@ -1,23 +1,25 @@
 define portage::package (
     $package = $title,
     $use = undef,
-    $use_target = undef,
     $keywords = undef,
-    $keywords_target = undef,
+    $assigned_use_target = undef,
+    $assigned_keywords_target = undef,
+    $assigned_mask_target = undef,
+    $assigned_unmask_target = undef,
     $ensure = undef,
     $target = undef,
   ) {
   if $target {
-    if $use_target != undef {
+    if $assigned_use_target == undef {
       $use_target = $target
     }
-    if $keywords_target != undef {
+    if $assigned_keywords_target == undef {
       $keywords_target = $target
     }
-    if $unmask_target != undef {
+    if $assigned_unmask_target == undef {
       $unmask_target = $target
     }
-    if $mask_target != undef {
+    if $assigned_mask_target == undef {
       $mask_target = $target
     }
   }
