@@ -9,16 +9,16 @@ Puppet::Type.type(:package_use).provide(:parsed,
 
   desc "The package_use provider that uses the ParsedFile class"
 
-  record_line :parsed, :fields => %w{name use_flags},
+  record_line :parsed, :fields => %w{name use},
     :joiner => ' ',
     :rts  => true do |line|
     hash = {}
     if line =~ /^(\S+)\s+(.*)\s*$/
       hash[:name] = $1
-      use_flags = $2
+      use = $2
 
-      unless use_flags == ""
-        hash[:use_flags] = use_flags.split(/\s+/)
+      unless use == ""
+        hash[:use] = use.split(/\s+/)
       end
     # just a package
     elsif line =~ /^(\S+)\s*/
@@ -27,14 +27,14 @@ Puppet::Type.type(:package_use).provide(:parsed,
       raise Puppet::Error, "Could not match '%s'" % line
     end
 
-    if hash[:use_flags] == ""
-      hash.delete(:use_flags)
+    if hash[:use] == ""
+      hash.delete(:use)
     end
 
     hash
   end
 
   def self.to_line(hash)
-    build_line(hash, :use_flags)
+    build_line(hash, :use)
   end
 end

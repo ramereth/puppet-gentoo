@@ -16,8 +16,8 @@ will be put in the relevant /etc/portage/package.\* directory.
 ### package\_use ###
 
     package_use { "app-admin/puppet":
-      use_flags => ["flag1", "flag2"],
-      target    => "puppet-flags",
+      use    => ["flag1", "flag2"],
+      target => "puppet-flags",
     }
 
 use\_flags can be either a string or an array of strings.
