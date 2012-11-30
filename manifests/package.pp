@@ -47,9 +47,9 @@ define portage::package (
       use_flags => $use,
       target    => $use_target,
       before    => Package[$package],
-      notify    => Exec["changed_useflags"],
+      notify    => Exec["changed_package_use"],
     }
-    exec {"changed_useflags":
+    exec {"changed_package_use":
       command     => "/usr/bin/emerge --reinstall=changed-use $package",
       refreshonly => true,
     }
