@@ -6,7 +6,7 @@ class portage (
   $binhost         = $portage::params::binhost,
   $portdir_overlay = $portage::params::portdir_overlay,
   $accept_license  = $portage::params::accept_license,
-  $emerge_opts     = $portage::params::emerge_opts
+  $emerge_opts     = $portage::params::emerge_opts,
   $make_conf       = $portage::params::make_conf,
 ) inherits portage::params {
 
@@ -31,7 +31,7 @@ class portage (
       ensure  => directory;
   }
 
-  exec { "emerge_changed_use":
+  exec { "changed_makeconf_use":
     command   => "/usr/bin/emerge --reinstall=changed-use @world",
     require   => Concat[$make_conf],
     refreshonly => true,
