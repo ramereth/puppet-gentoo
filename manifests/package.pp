@@ -1,55 +1,52 @@
 define portage::package (
     $package = $title,
-    $version = undef,
     $use = undef,
-    $use_target = undef,
     $keywords = undef,
-    $keywords_target = undef,
-    $slot = undef,
+    $assigned_use_target = undef,
+    $assigned_keywords_target = undef,
+    $assigned_mask_target = undef,
+    $assigned_unmask_target = undef,
     $ensure = undef,
     $target = undef,
   ) {
-  if $version {
-    $package_full = "=$package-$version"
-    notify{ $package_full : }
-  }
-  else {
-    $package_full = $package
-  }
   if $target {
-    if $use_target != undef {
+    if $assigned_use_target == undef {
       $use_target = $target
     }
-    if $keywords_target != undef {
+    if $assigned_keywords_target == undef {
       $keywords_target = $target
     }
-    if $unmask_target != undef {
+    if $assigned_unmask_target == undef {
       $unmask_target = $target
     }
-    if $mask_target != undef {
+    if $assigned_mask_target == undef {
       $mask_target = $target
     }
   }
   if $keywords {
-    package_keywords { $package_full:
+    package_keywords { $package:
       keywords => $keywords,
       target   => $keywords_target,
+      before   => Package[$package],
     }
   }
   if $unmask {
-    package_unmask { $package_full:
-    target => $unmask_target,
+    package_unmask { $package:
+      target => $unmask_target,
+      before => Package[$package],
     }
   }
   if $mask {
-    package_mask { $package_full:
-    target => $mask_target,
+    package_mask { $package:
+      target => $mask_target,
+      before => Package[$package],
     }
   }
   if $use {
     package_use { $package:
       use_flags => $use,
       target    => $use_target,
+      before    => Package[$package],
       notify    => Exec["changed_useflags"],
     }
     exec {"changed_useflags":
@@ -61,5 +58,3 @@ define portage::package (
     ensure => $ensure,
   }
 }
-
-# vim: set autoindent softtabstop=2 expandtab textwidth=80 shiftwidth=2:
