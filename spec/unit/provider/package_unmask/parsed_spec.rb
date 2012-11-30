@@ -22,7 +22,7 @@ describe provider_class do
       @provider.parse_line(line)[:name].should == "app-admin/tree"
     end
   end
-  
+
   describe "when flushing" do
     before :each do
       @ramfile = Puppet::Util::FileType::FileTypeRam.new(@default_target)

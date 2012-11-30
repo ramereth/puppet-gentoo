@@ -37,7 +37,7 @@ describe provider_class do
       @provider.parse_line(line)[:use_flags].should == %w{doc -debug}
     end
   end
-  
+
   describe "when flushing" do
     before :each do
       @ramfile = Puppet::Util::FileType::FileTypeRam.new(@default_target)
