@@ -1,9 +1,9 @@
 Puppet::Type.newtype(:package_use) do
   @doc = "Set use flags for a package.
-  
+
       package_use { 'app-admin/puppet':
-        use_flags => ['augeas', '-rrdtool'],
-        target  => 'puppet',
+        use    => ['augeas', '-rrdtool'],
+        target => 'puppet',
       }"
 
   ensurable
@@ -21,7 +21,7 @@ Puppet::Type.newtype(:package_use) do
     end
   end
 
-  newproperty(:use_flags) do
+  newproperty(:use) do
     desc "The flag use flag(s) to apply"
 
     validate do |value|

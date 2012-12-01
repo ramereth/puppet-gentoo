@@ -29,12 +29,12 @@ describe provider_class do
 
     it "should parse out a single use flag" do
       line = "app-admin/tree doc"
-      @provider.parse_line(line)[:use_flags].should == %w{doc}
+      @provider.parse_line(line)[:use].should == %w{doc}
     end
 
     it "should parse out multiple use flags into an array" do
       line = "app-admin/tree doc -debug"
-      @provider.parse_line(line)[:use_flags].should == %w{doc -debug}
+      @provider.parse_line(line)[:use].should == %w{doc -debug}
     end
   end
 
@@ -61,13 +61,13 @@ describe provider_class do
     end
 
     it "should write a single use to disk" do
-      @providerinstance.use_flags = "doc"
+      @providerinstance.use = "doc"
       @providerinstance.flush
       @ramfile.read.should == "app-admin/tree doc\n"
     end
 
     it "should write an array of use to disk" do
-      @providerinstance.use_flags = %w{doc bin}
+      @providerinstance.use = %w{doc bin}
       @providerinstance.flush
       @ramfile.read.should == "app-admin/tree doc bin\n"
     end

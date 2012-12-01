@@ -15,7 +15,7 @@ describe type_class do
 
   describe "when validating attributes" do
     params     = [:name]
-    properties = [:use_flags, :target, :ensure]
+    properties = [:use, :target, :ensure]
 
     params.each do |param|
       it "should have the #{param} param" do
@@ -34,17 +34,17 @@ describe type_class do
     @class.key_attributes.should == [:name]
   end
 
-  describe "when validating the use_flags property" do
-    it "should accept a string for use_flags" do
-      lambda { @class.new(:name => "sys-devel/gcc", :use_flags => "openmp") }.should_not raise_error
+  describe "when validating the use property" do
+    it "should accept a string for use" do
+      lambda { @class.new(:name => "sys-devel/gcc", :use => "openmp") }.should_not raise_error
     end
 
     it "should reject use flags with a space" do
-      lambda { @class.new(:name => "sys-devel/gcc", :use_flags => "open mp") }.should raise_error
+      lambda { @class.new(:name => "sys-devel/gcc", :use => "open mp") }.should raise_error
     end
 
-    it "should accept an array for use_flags" do
-      lambda { @class.new(:name => "sys-devel/gcc", :use_flags => ["doc","openmp"]) }.should_not raise_error
+    it "should accept an array for use" do
+      lambda { @class.new(:name => "sys-devel/gcc", :use => ["doc","openmp"]) }.should_not raise_error
     end
   end
 

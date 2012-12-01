@@ -44,10 +44,10 @@ define portage::package (
   }
   if $use {
     package_use { $package:
-      use_flags => $use,
-      target    => $use_target,
-      before    => Package[$package],
-      notify    => Exec["changed_package_use"],
+      use    => $use,
+      target => $use_target,
+      before => Package[$package],
+      notify => Exec["changed_package_use"],
     }
     exec {"changed_package_use":
       command     => "/usr/bin/emerge --reinstall=changed-use $package",
