@@ -1,7 +1,6 @@
 define portage::makeconf(
   $source  = "",
   $content = "",
-  $comment = "",
   $order   = 10,
   $ensure = present
 ) {
