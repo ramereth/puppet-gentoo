@@ -1,13 +1,16 @@
+# = Define: portage::package
+#
+# Configures and installs a package with portage-specific configuration
 define portage::package (
-    $package = $title,
-    $use = undef,
-    $keywords = undef,
-    $assigned_use_target = undef,
+    $ensure                   = undef,
+    $package                  = $title,
+    $use                      = undef,
+    $keywords                 = undef,
+    $assigned_use_target      = undef,
     $assigned_keywords_target = undef,
-    $assigned_mask_target = undef,
-    $assigned_unmask_target = undef,
-    $ensure = undef,
-    $target = undef,
+    $assigned_mask_target     = undef,
+    $assigned_unmask_target   = undef,
+    $target                   = undef,
   ) {
   if $target {
     if $assigned_use_target == undef {
