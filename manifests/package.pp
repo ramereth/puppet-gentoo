@@ -56,14 +56,14 @@ define portage::package (
     $ensure          = undef,
     $use             = undef,
     $keywords        = undef,
+    $target          = undef,
     $use_target      = undef,
     $keywords_target = undef,
     $mask_target     = undef,
     $unmask_target   = undef,
-    $target          = undef,
-  ) {
-  if $target {
+) {
 
+  if $target {
     if $use_target      { $assigned_use_target      = $use_target      }
     if $keywords_target { $assigned_keywords_target = $keywords_target }
     if $mask_target     { $assigned_mask_target     = $mask_target     }
