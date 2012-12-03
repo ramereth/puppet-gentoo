@@ -64,10 +64,33 @@ define portage::package (
 ) {
 
   if $target {
-    if $use_target      { $assigned_use_target      = $use_target      }
-    if $keywords_target { $assigned_keywords_target = $keywords_target }
-    if $mask_target     { $assigned_mask_target     = $mask_target     }
-    if $unmask_target   { $assigned_unmask_target   = $unmask_target   }
+    if $use_target {
+      $assigned_use_target = $use_target
+    }
+    else {
+      $assigned_use_target = $target
+    }
+
+    if $keywords_target {
+      $assigned_keywords_target = $keywords_target
+    }
+    else {
+      $assigned_keywords_target = $target
+    }
+
+    if $mask_target {
+      $assigned_mask_target = $mask_target
+    }
+    else {
+      $assigned_mask_target = $target
+    }
+
+    if $unmask_target {
+      $assigned_unmask_target = $unmask_target
+    }
+    else {
+      $assigned_unmask_target = $target
+    }
   }
 
   if $keywords {
