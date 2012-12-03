@@ -1,4 +1,4 @@
-# = Class: portage::parsm
+# = Class: portage::params
 #
 # Contains default values for portage.
 #
