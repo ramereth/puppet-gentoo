@@ -41,7 +41,7 @@ class portage (
     owner   => root,
     group   => root,
     mode    => 644,
-    notify  => Exec["emerge_changed_use"],
+    notify  => Exec["changed_makeconf_use"],
   }
 
   concat::fragment { "makeconf_base":
