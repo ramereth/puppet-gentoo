@@ -98,21 +98,21 @@ class portage (
   }
 
   file {
-    "/etc/portage/package.keywords":
+    '/etc/portage/package.keywords':
       ensure  => directory;
-    "/etc/portage/package.mask":
+    '/etc/portage/package.mask':
       ensure  => directory;
-    "/etc/portage/package.unmask":
+    '/etc/portage/package.unmask':
       ensure  => directory;
-    "/etc/portage/package.use":
+    '/etc/portage/package.use':
       ensure  => directory;
-    "/etc/portage/postsync.d":
+    '/etc/portage/postsync.d':
       ensure  => directory;
   }
 
-  exec { "changed_makeconf_use":
-    command   => "/usr/bin/emerge --reinstall=changed-use @world",
-    require   => Concat[$make_conf],
+  exec { 'changed_makeconf_use':
+    command     => '/usr/bin/emerge --reinstall=changed-use @world',
+    require     => Concat[$make_conf],
     refreshonly => true,
   }
 
@@ -120,12 +120,12 @@ class portage (
     owner   => root,
     group   => root,
     mode    => 644,
-    notify  => Exec["changed_makeconf_use"],
+    notify  => Exec['changed_makeconf_use'],
   }
 
-  concat::fragment { "makeconf_base":
+  concat::fragment { 'makeconf_base':
     target  => $make_conf,
-    content => template("portage/makeconf.base.conf.erb"),
+    content => template('portage/makeconf.base.conf.erb'),
     order   => 00,
   }
 }
