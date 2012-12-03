@@ -3,7 +3,6 @@
 # Configures and installs a package with portage-specific configuration
 define portage::package (
     $ensure          = undef,
-    $package         = $title,
     $use             = undef,
     $keywords        = undef,
     $use_target      = undef,
@@ -21,37 +20,37 @@ define portage::package (
   }
 
   if $keywords {
-    package_keywords { $package:
+    package_keywords { $name:
       keywords => $keywords,
       target   => $assigned_keywords_target,
-      before   => Package[$package],
+      before   => Package[$name],
     }
   }
   if $unmask {
-    package_unmask { $package:
+    package_unmask { $name:
       target => $assigned_unmask_target,
-      before => Package[$package],
+      before => Package[$name],
     }
   }
   if $mask {
-    package_mask { $package:
+    package_mask { $name:
       target => $assigned_mask_target,
-      before => Package[$package],
+      before => Package[$name],
     }
   }
   if $use {
-    package_use { $package:
+    package_use { $name:
       use    => $use,
       target => $assigned_use_target,
-      before => Package[$package],
+      before => Package[$name],
       notify => Exec["changed_package_use"],
     }
     exec {"changed_package_use":
-      command     => "/usr/bin/emerge --reinstall=changed-use $package",
+      command     => "/usr/bin/emerge --reinstall=changed-use ${name}",
       refreshonly => true,
     }
   }
-  package { $package:
+  package { $name:
     ensure => $ensure,
   }
 }
