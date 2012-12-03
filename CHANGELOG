@@ -4,7 +4,7 @@ CHANGELOG
 1.0.0
 -----
 
-2012-11-26
+2012-12-03
 
 This is a backwards incompatible feature and bugfix release.
 
@@ -15,10 +15,10 @@ This is a backwards incompatible feature and bugfix release.
   * Removed legacy defined types for package.* entries
   * Removed unusable localegen and category defined types
   * (portage-#7) make.conf moved from /etc/make.conf to /etc/portage/make.conf
+  * (portage-#8) Order package_* resources before package installation
+  * (portage-#14) Rename package_use `use_flags` to `use`
 
-Major thanks to Theo Chatzimichos testing the module and reporting/fixing
-bugs.
-
+Major thanks to Theo Chatzimichos for a ton of bugfixes and QA testing.
 
 0.1.0
 -----
