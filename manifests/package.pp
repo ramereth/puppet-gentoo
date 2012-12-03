@@ -2,53 +2,47 @@
 #
 # Configures and installs a package with portage-specific configuration
 define portage::package (
-    $ensure                   = undef,
-    $package                  = $title,
-    $use                      = undef,
-    $keywords                 = undef,
-    $assigned_use_target      = undef,
-    $assigned_keywords_target = undef,
-    $assigned_mask_target     = undef,
-    $assigned_unmask_target   = undef,
-    $target                   = undef,
+    $ensure          = undef,
+    $package         = $title,
+    $use             = undef,
+    $keywords        = undef,
+    $use_target      = undef,
+    $keywords_target = undef,
+    $mask_target     = undef,
+    $unmask_target   = undef,
+    $target          = undef,
   ) {
   if $target {
-    if $assigned_use_target == undef {
-      $use_target = $target
-    }
-    if $assigned_keywords_target == undef {
-      $keywords_target = $target
-    }
-    if $assigned_unmask_target == undef {
-      $unmask_target = $target
-    }
-    if $assigned_mask_target == undef {
-      $mask_target = $target
-    }
+
+    if $use_target      { $assigned_use_target      = $use_target      }
+    if $keywords_target { $assigned_keywords_target = $keywords_target }
+    if $mask_target     { $assigned_mask_target     = $mask_target     }
+    if $unmask_target   { $assigned_unmask_target   = $unmask_target   }
   }
+
   if $keywords {
     package_keywords { $package:
       keywords => $keywords,
-      target   => $keywords_target,
+      target   => $assigned_keywords_target,
       before   => Package[$package],
     }
   }
   if $unmask {
     package_unmask { $package:
-      target => $unmask_target,
+      target => $assigned_unmask_target,
       before => Package[$package],
     }
   }
   if $mask {
     package_mask { $package:
-      target => $mask_target,
+      target => $assigned_mask_target,
       before => Package[$package],
     }
   }
   if $use {
     package_use { $package:
       use    => $use,
-      target => $use_target,
+      target => $assigned_use_target,
       before => Package[$package],
       notify => Exec["changed_package_use"],
     }
