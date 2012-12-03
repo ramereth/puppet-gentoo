@@ -1,6 +1,57 @@
 # = Define: portage::package
 #
-# Configures and installs a package with portage-specific configuration
+# Configures and install portage backed packages
+#
+# == Parameters
+#
+# [*ensure*]
+#
+# The ensure value of the package.
+#
+# [*use*]
+#
+# Use flags for the package.
+#
+# [*keywords*]
+#
+# Portage keywords for the package.
+#
+# [*target*]
+#
+# A default value for package.* targets
+#
+# [*use_target*]
+#
+# An optional custom target for package use flags
+#
+# [*keywords_target*]
+#
+# An optional custom target for package keywords
+#
+# [*mask_target*]
+#
+# An optional custom target for package masks
+#
+# [*unmask_target*]
+#
+# An optional custom target for package unmasks
+#
+# == Example
+#
+#     portage::package { 'app-admin/puppet':
+#       ensure   => '3.0.1',
+#       use      => ['augeas', '-rrdtool'],
+#       keywords => '~amd64',
+#       target   => 'puppet',
+#     }
+#
+# == See Also
+#
+#  * `puppet describe package_use`
+#  * `puppet describe package_keywords`
+#  * `puppet describe package_mask`
+#  * `puppet describe package_unmask`
+#
 define portage::package (
     $ensure          = undef,
     $use             = undef,
