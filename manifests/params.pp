@@ -1,6 +1,12 @@
+# = Class: portage::parsm
+#
+# Contains default values for portage.
+#
+# == Example
+#
+# This class does not need to be directly included.
+#
 class portage::params {
-  # settings that the user can define (if not defined, defaults set here
-  # apply).
 
   $global_use = '$USE'
   $features   = '$FEATURES'
