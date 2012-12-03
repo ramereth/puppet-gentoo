@@ -1,28 +1,22 @@
-class gentoo::params {
-    # settings that the user can define (if not defined, defaults set here
-    # apply).
+# = Class: portage::params
+#
+# Contains default values for portage.
+#
+# == Example
+#
+# This class does not need to be directly included.
+#
+class portage::params {
 
-    # Global use flags
-    $global_use = '$USE'
+  $global_use = '$USE'
+  $features   = '$FEATURES'
+  $mirrors    = 'http://distfiles.gentoo.org'
+  $sync       = 'rsync://rsync.gentoo.org/gentoo-portage'
+  $binhost    = ''
 
-    # FEATURES
-    $features   = '$FEATURES'
+  $portdir_overlay = '$PORTDIR_OVERLAY'
+  $accept_license  = '$ACCEPT_LICENSE'
+  $emerge_opts     = ''
 
-    # GENTOO_MIRRORS
-    $mirrors    = "http://distfiles.gentoo.org"
-
-    # SYNC
-    $sync       = "rsync://rsync.gentoo.org/gentoo-portage"
-
-    # PORTAGE_BINHOST
-    $binhost    = ""
-
-    # PORTDIR_OVERLAY
-    $portdir_overlay    = '$PORTDIR_OVERLAY'
-
-    # ACCEPT_LICENSE
-    $accept_license     = '$ACCEPT_LICENSE'
-
-    # EMERGE_DEFAULT_OPTS
-    $emerge_opts        = ""
+  $make_conf = '/etc/portage/make.conf'
 }

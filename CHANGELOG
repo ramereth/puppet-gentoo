@@ -1,0 +1,36 @@
+CHANGELOG
+=========
+
+1.0.0
+-----
+
+2012-12-03
+
+This is a backwards incompatible feature and bugfix release.
+
+  * Renamed all classes and defines from 'gentoo' to 'portage'
+  * Bugfixes for the package_use parsedfile provider
+  * Metadata corrections to add concat as a dependency
+  * Site specific files removed
+  * Removed legacy defined types for package.* entries
+  * Removed unusable localegen and category defined types
+  * (portage-#7) make.conf moved from /etc/make.conf to /etc/portage/make.conf
+  * (portage-#8) Order package_* resources before package installation
+  * (portage-#14) Rename package_use `use_flags` to `use`
+
+Major thanks to Theo Chatzimichos for a ton of bugfixes and QA testing.
+
+0.1.0
+-----
+
+2012-10-20
+
+  * Initial forge release with expanded features and tests.
+
+0.0.1
+-----
+
+2011-08-31
+
+  * Initial pre-release
+
