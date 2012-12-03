@@ -4,13 +4,13 @@ class portage::params {
 
   $global_use = '$USE'
   $features   = '$FEATURES'
-  $mirrors    = "http://distfiles.gentoo.org"
-  $sync       = "rsync://rsync.gentoo.org/gentoo-portage"
-  $binhost    = ""
+  $mirrors    = 'http://distfiles.gentoo.org'
+  $sync       = 'rsync://rsync.gentoo.org/gentoo-portage'
+  $binhost    = ''
 
   $portdir_overlay = '$PORTDIR_OVERLAY'
   $accept_license  = '$ACCEPT_LICENSE'
-  $emerge_opts     = ""
+  $emerge_opts     = ''
 
   $make_conf = '/etc/portage/make.conf'
 }

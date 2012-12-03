@@ -117,9 +117,9 @@ define portage::package (
       use    => $use,
       target => $assigned_use_target,
       before => Package[$name],
-      notify => Exec["changed_package_use"],
+      notify => Exec['changed_package_use'],
     }
-    exec {"changed_package_use":
+    exec { 'changed_package_use':
       command     => "/usr/bin/emerge --reinstall=changed-use ${name}",
       refreshonly => true,
     }
