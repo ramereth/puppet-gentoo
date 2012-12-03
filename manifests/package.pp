@@ -1,60 +1,130 @@
+# = Define: portage::package
+#
+# Configures and install portage backed packages
+#
+# == Parameters
+#
+# [*ensure*]
+#
+# The ensure value of the package.
+#
+# [*use*]
+#
+# Use flags for the package.
+#
+# [*keywords*]
+#
+# Portage keywords for the package.
+#
+# [*target*]
+#
+# A default value for package.* targets
+#
+# [*use_target*]
+#
+# An optional custom target for package use flags
+#
+# [*keywords_target*]
+#
+# An optional custom target for package keywords
+#
+# [*mask_target*]
+#
+# An optional custom target for package masks
+#
+# [*unmask_target*]
+#
+# An optional custom target for package unmasks
+#
+# == Example
+#
+#     portage::package { 'app-admin/puppet':
+#       ensure   => '3.0.1',
+#       use      => ['augeas', '-rrdtool'],
+#       keywords => '~amd64',
+#       target   => 'puppet',
+#     }
+#
+# == See Also
+#
+#  * `puppet describe package_use`
+#  * `puppet describe package_keywords`
+#  * `puppet describe package_mask`
+#  * `puppet describe package_unmask`
+#
 define portage::package (
-    $package = $title,
-    $use = undef,
-    $keywords = undef,
-    $assigned_use_target = undef,
-    $assigned_keywords_target = undef,
-    $assigned_mask_target = undef,
-    $assigned_unmask_target = undef,
-    $ensure = undef,
-    $target = undef,
-  ) {
+    $ensure          = undef,
+    $use             = undef,
+    $keywords        = undef,
+    $target          = undef,
+    $use_target      = undef,
+    $keywords_target = undef,
+    $mask_target     = undef,
+    $unmask_target   = undef,
+) {
+
   if $target {
-    if $assigned_use_target == undef {
-      $use_target = $target
+    if $use_target {
+      $assigned_use_target = $use_target
     }
-    if $assigned_keywords_target == undef {
-      $keywords_target = $target
+    else {
+      $assigned_use_target = $target
     }
-    if $assigned_unmask_target == undef {
-      $unmask_target = $target
+
+    if $keywords_target {
+      $assigned_keywords_target = $keywords_target
     }
-    if $assigned_mask_target == undef {
-      $mask_target = $target
+    else {
+      $assigned_keywords_target = $target
+    }
+
+    if $mask_target {
+      $assigned_mask_target = $mask_target
+    }
+    else {
+      $assigned_mask_target = $target
+    }
+
+    if $unmask_target {
+      $assigned_unmask_target = $unmask_target
+    }
+    else {
+      $assigned_unmask_target = $target
     }
   }
+
   if $keywords {
-    package_keywords { $package:
+    package_keywords { $name:
       keywords => $keywords,
-      target   => $keywords_target,
-      before   => Package[$package],
+      target   => $assigned_keywords_target,
+      before   => Package[$name],
     }
   }
   if $unmask {
-    package_unmask { $package:
-      target => $unmask_target,
-      before => Package[$package],
+    package_unmask { $name:
+      target => $assigned_unmask_target,
+      before => Package[$name],
     }
   }
   if $mask {
-    package_mask { $package:
-      target => $mask_target,
-      before => Package[$package],
+    package_mask { $name:
+      target => $assigned_mask_target,
+      before => Package[$name],
     }
   }
   if $use {
-    package_use { $package:
+    package_use { $name:
       use    => $use,
-      target => $use_target,
-      before => Package[$package],
-      notify => Exec["changed_package_use"],
+      target => $assigned_use_target,
+      before => Package[$name],
+      notify => Exec['changed_package_use'],
     }
-    exec {"changed_package_use":
-      command     => "/usr/bin/emerge --reinstall=changed-use $package",
+    exec { 'changed_package_use':
+      command     => "/usr/bin/emerge --reinstall=changed-use ${name}",
       refreshonly => true,
     }
   }
-  package { $package:
+  package { $name:
     ensure => $ensure,
   }
 }
